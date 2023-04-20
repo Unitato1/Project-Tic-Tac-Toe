@@ -1,0 +1,39 @@
+:root {
+  height: 100%;
+  width: 100%;
+  color: rgb(252, 252, 252);
+}
+body {
+  box-sizing: border-box;
+  background-color: rgb(98, 86, 86);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+}
+h1 {
+  flex: 1 1 0;
+}
+
+#board {
+  flex: 9 9 0;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  width: 50vw;
+  border: 1px solid black;
+  box-shadow: 1px 1px 10px rgb(52, 48, 48);
+}
+
+#board > div {
+  border: 1px solid white;
+}
+#board > div:hover {
+  border: 3px solid white;
+  box-shadow: 1px 1px 15px black;
+}
+#board > div:active {
+  border: 2px solid white;
+  box-shadow: 1px 1px 20px black;
+}
