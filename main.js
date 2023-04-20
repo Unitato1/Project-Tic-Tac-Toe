@@ -10,7 +10,11 @@ const gameBoard = (() => {
     for (let i = 0; i < 9; i++) {
       field = document.createElement("div");
       field.dataset.pos = i;
-      field.textContent = "X";
+      field.addEventListener("mousedown", function () {
+        console.log(game.curr);
+        this.textContent = game.curr;
+        game.curr = game.curr === "X" ? "O" : "X";
+      });
       dom_Board.appendChild(field);
       Board.push(field);
     }
@@ -19,5 +23,7 @@ const gameBoard = (() => {
 })();
 
 const game = (() => {
+  const curr = "X";
   gameBoard.createBoard();
+  return { curr };
 })();
