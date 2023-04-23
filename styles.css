@@ -86,10 +86,55 @@ h1 {
   left: 100px;
 }
 
-#players > div {
+.first_player {
   margin-bottom: 100px;
 }
 
 .hidden {
   display: none;
+}
+
+.first_player,
+.second_player {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 0.35fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+}
+
+#symbol {
+  grid-column: 3/4;
+  justify-self: center;
+  display: block;
+}
+form {
+  font-size: 4vh;
+}
+form > div > input {
+  font-size: 3vh;
+  margin-left: 0;
+  border-radius: 10px;
+  background-color: rgb(254, 250, 250);
+}
+
+.label_plr_one,
+.label_plr_two {
+  grid-column: 1/2;
+  justify-self: right;
+  margin-right: 10px;
+}
+
+#submit {
+  background-color: transparent;
+  border: 0;
+  font-size: 4vh;
+  margin: 10px;
+  color: white;
+  border: 1px solid white;
+  border-radius: 15px;
+}
+
+#submit:hover {
+  font-size: 5vh;
+  margin-top: calc(10px - 1.3vh);
+  box-shadow: 1px 1px 5px white;
 }

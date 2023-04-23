@@ -11,9 +11,35 @@
   </head>
   <body>
     <h1>Tic-Tac-Toe</h1>
-    <div id="players" class="hidden">
-      <div>Player One:</div>
-      <div>Player Two:</div>
+    <div id="players" class="">
+      <form action="">
+        <div class="first_player">
+          <label for="symbol" id="symbol">Start</label>
+          <label class="label_plr_one" for="player_one">Player one:</label>
+          <input
+            type="text"
+            name="player_one"
+            id="player_one"
+            placeholder="Jon"
+            required
+          />
+          <input type="radio" name="symbol" id="X" checked />
+          <label for="X" id="label_X">X</label>
+        </div>
+        <div class="second_player">
+          <label class="label_plr_two" for="player_two">Player two:</label>
+          <input
+            type="text"
+            name="player_two"
+            id="player_two"
+            placeholder="Bob"
+            required
+          />
+          <input type="radio" name="symbol" id="O" />
+          <label for="O" id="label_O">O</label>
+        </div>
+        <button id="submit" type="submit">Submit</button>
+      </form>
     </div>
     <div><button class="newgame">New Game</button></div>
     <div class="hidden" id="board"></div>

@@ -84,9 +84,38 @@ const gameBoard = (() => {
 // prasatko a tuipan
 // chopotniska a maco
 // velke bu a male bu
+const player = (name, symbol) => {
+  return { name, symbol };
+};
 const game = (() => {
   const curr = "X";
   const h1 = document.querySelector("h1");
+  const player_one = document.querySelector("#player_one");
+  const player_two = document.querySelector("#player_two");
+  const submit = document.querySelector("#submit");
+  const radio_X = document.querySelector("#X");
+  const radio_O = document.querySelector("#O");
+  const label_X = document.querySelector("#label_X");
+  const label_O = document.querySelector("#label_O");
+  const sign_players = () => {
+    Player_One = Player(player_one.value, label_X.textContent);
+    Player_Two = Player(player_two.value, label_O.textContent);
+    if (radio_X.checked) {
+      console.log(Player_One, Player_Two);
+    }
+  };
+  radio_X.addEventListener("click", () => {
+    label_X.textContent = "X";
+    label_O.textContent = "O";
+  });
+  radio_O.addEventListener("click", () => {
+    label_X.textContent = "O";
+    label_O.textContent = "X";
+  });
+  submit.addEventListener("click", (e) => {
+    e.preventDefault();
+    sign_players();
+  });
   // gameBoard.createBoard();
   const set_winner = (winner, tie) => {
     gameBoard.newgame.className = "newgame gamend";
