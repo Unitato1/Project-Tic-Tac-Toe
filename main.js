@@ -13,20 +13,21 @@ const gameBoard = (() => {
       field = document.createElement("div");
       field.dataset.pos = i;
       field.addEventListener("mousedown", function () {
-        if (winner) {
+        if (winner || this.textContent !== "") {
           return;
         }
-        if (this.textContent === "") {
-          this.textContent = game.curr;
-          game.curr = game.curr === "X" ? "O" : "X";
-          occupied += 1;
-          console.log(occupied);
-        } else {
-          return;
-        }
+        this.textContent = game.curr;
+        game.curr = game.curr === "X" ? "O" : "X";
+        occupied += 1;
         if (checkWinner()) {
           winner = true;
-          game.set_winner(game.curr === "X" ? "O" : "X");
+          game.set_winner(game.curr === "X" ? "O" : "X", false);
+          return;
+        }
+        if (occupied === 9) {
+          winner = true;
+          game.set_winner(game.curr === "X" ? "O" : "X", true);
+          return;
         }
       });
       dom_Board.appendChild(field);
@@ -72,20 +73,21 @@ const gameBoard = (() => {
 const game = (() => {
   const curr = "X";
   const h1 = document.querySelector("h1");
-  let winner;
+  const newgame = document.querySelector(".newgame");
   gameBoard.createBoard();
-  const set_winner = (pass) => {
-    winner = pass;
+  const set_winner = (winner, tie) => {
     console.log(winner);
-    display_winner();
-  };
-  const display_winner = () => {
-    h1.textContent =
-      "The winner is " +
-      winner +
-      ", if you would like to play another game press new game.";
-    h1.className = "end";
-    console.log(gameBoard.get_occupied());
+    newgame.className = "newgame gamend";
+    console.log(newgame.className);
+    if (tie) {
+      h1.textContent = "It's tie. Try another game.";
+    } else {
+      h1.textContent =
+        "The winner is " +
+        winner +
+        ", if you would like to play another game press new game.";
+      h1.className = "end";
+    }
   };
 
   return { curr, set_winner };
