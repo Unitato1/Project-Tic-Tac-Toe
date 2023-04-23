@@ -100,9 +100,7 @@ const game = (() => {
   const sign_players = () => {
     Player_One = Player(player_one.value, label_X.textContent);
     Player_Two = Player(player_two.value, label_O.textContent);
-    if (radio_X.checked) {
-      console.log(Player_One, Player_Two);
-    }
+    console.log(Player_One, Player_Two);
   };
   radio_X.addEventListener("click", () => {
     label_X.textContent = "X";
