@@ -3,11 +3,25 @@ const Player = (name, symbol) => {
 };
 
 const gameBoard = (() => {
-  const Board = [];
+  let Board = [];
   const dom_Board = document.querySelector("#board");
+  const newgame = document.querySelector(".newgame");
+  const h1 = document.querySelector("h1");
   let field;
   let winner;
   let occupied = 0;
+  const reset = () => {
+    Board = [];
+    winner = false;
+    occupied = 0;
+    dom_Board.replaceChildren();
+    h1.textContent = "Tic-Tac-Toe";
+    createBoard();
+    h1.className = "";
+  };
+  newgame.addEventListener("click", () => {
+    reset();
+  });
   const createBoard = () => {
     for (let i = 0; i < 9; i++) {
       field = document.createElement("div");
@@ -61,7 +75,7 @@ const gameBoard = (() => {
       [2, 6, 2],
     ].some(checkLine);
   };
-  return { checkWinner, createBoard, winner, get_occupied };
+  return { newgame, checkWinner, createBoard, winner, get_occupied };
 })();
 // ibistek a duha
 // slonik a blcha
@@ -73,20 +87,13 @@ const gameBoard = (() => {
 const game = (() => {
   const curr = "X";
   const h1 = document.querySelector("h1");
-  const newgame = document.querySelector(".newgame");
-  gameBoard.createBoard();
+  // gameBoard.createBoard();
   const set_winner = (winner, tie) => {
-    console.log(winner);
-    newgame.className = "newgame gamend";
-    console.log(newgame.className);
+    gameBoard.newgame.className = "newgame gamend";
     if (tie) {
       h1.textContent = "It's tie. Try another game.";
     } else {
-      h1.textContent =
-        "The winner is " +
-        winner +
-        ", if you would like to play another game press new game.";
-      h1.className = "end";
+      h1.textContent = "The winner is " + winner + ".";
     }
   };
 
