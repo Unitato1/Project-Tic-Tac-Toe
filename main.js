@@ -5,7 +5,7 @@ const Player = (name, symbol) => {
 const gameBoard = (() => {
   let Board = [];
   const dom_Board = document.querySelector("#board");
-  const newgame = document.querySelector(".newgame");
+  const newgame = document.querySelector(".hidden");
   const h1 = document.querySelector("h1");
   let field;
   let winner;
