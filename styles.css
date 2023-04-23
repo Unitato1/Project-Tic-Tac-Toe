@@ -16,6 +16,9 @@ h1 {
   flex: 1 1 0;
   font-size: 9vh;
 }
+.end {
+  font-size: 3vh;
+}
 
 #board {
   flex: 9 9 0;
@@ -24,6 +27,7 @@ h1 {
   grid-template-columns: repeat(3, 1fr);
   width: 50vw;
   box-shadow: 1px 1px 15px rgb(52, 48, 48);
+  margin: 100px;
 }
 
 #board > div {
