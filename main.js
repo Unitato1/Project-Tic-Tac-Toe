@@ -21,6 +21,7 @@ const gameBoard = (() => {
   };
   newgame.addEventListener("click", () => {
     reset();
+    newgame.className = "hidden";
   });
   const createBoard = () => {
     for (let i = 0; i < 9; i++) {
@@ -84,22 +85,24 @@ const gameBoard = (() => {
 // prasatko a tuipan
 // chopotniska a maco
 // velke bu a male bu
-const player = (name, symbol) => {
-  return { name, symbol };
+const player = (name, symbol, score) => {
+  return { name, symbol, score };
 };
 const game = (() => {
   const curr = "X";
   const h1 = document.querySelector("h1");
   const player_one = document.querySelector("#player_one");
   const player_two = document.querySelector("#player_two");
+  const form = document.querySelector("form");
   const submit = document.querySelector("#submit");
   const radio_X = document.querySelector("#X");
   const radio_O = document.querySelector("#O");
   const label_X = document.querySelector("#label_X");
   const label_O = document.querySelector("#label_O");
+  const board = document.querySelector("#board");
   const sign_players = () => {
-    Player_One = Player(player_one.value, label_X.textContent);
-    Player_Two = Player(player_two.value, label_O.textContent);
+    Player_One = Player(player_one.value, label_X.textContent, 0);
+    Player_Two = Player(player_two.value, label_O.textContent, 0);
     console.log(Player_One, Player_Two);
   };
   radio_X.addEventListener("click", () => {
@@ -113,8 +116,10 @@ const game = (() => {
   submit.addEventListener("click", (e) => {
     e.preventDefault();
     sign_players();
+    board.className = "show_board";
+    form.className = "hidden";
+    gameBoard.createBoard();
   });
-  // gameBoard.createBoard();
   const set_winner = (winner, tie) => {
     gameBoard.newgame.className = "newgame gamend";
     if (tie) {
